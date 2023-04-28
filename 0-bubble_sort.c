@@ -11,22 +11,23 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i;
 	char is_sorted = 0;
-	int num;
-	
-	while(!is_sorted)
+	int num, tail;
+
+	tail = size;
+	while (!is_sorted)
 	{
 		is_sorted = 1;
-		for(i = 1; i < size; i++)
+		for (i = 1; i < tail; i++)
 		{
-			if(array[i] < array[i-1])
+			if (array[i] < array[i - 1])
 			{
 				num = array[i];
-				array[i] = array[i-1];
-				array[i-1] = num;
+				array[i] = array[i - 1];
+				array[i - 1] = num;
 				print_array(array, size);
 				is_sorted = 0;
 			}
 		}
-		size--;
+		tail--;
 	}
 }
