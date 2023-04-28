@@ -13,17 +13,20 @@ void bubble_sort(int *array, size_t size)
 	char is_sorted = 0;
 	int num;
 
+	if (size < 2)
+		return;
+ 
 	tail = size;
 	while (!is_sorted)
 	{
 		is_sorted = 1;
-		for (i = 1; i < tail; i++)
+		for (i = 0; i < tail - 1; i++)
 		{
-			if (array[i] < array[i - 1])
+			if (array[i] > array[i + 1])
 			{
 				num = array[i];
-				array[i] = array[i - 1];
-				array[i - 1] = num;
+				array[i] = array[i + 1];
+				array[i + 1] = num;
 				print_array(array, size);
 				is_sorted = 0;
 			}
