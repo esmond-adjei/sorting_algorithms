@@ -24,30 +24,6 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 }
 
 /**
- * is_valid_list - checks valid doubly linked list (not circular)
- * @head: head of the list
- * Return - 1 if valid list else 0
- */
-int is_valid_list(listint_t *head)
-{
-	listint_t *slow = head;
-	listint_t *fast = head;
-
-	if (head == NULL)
-		return (1);
-
-	while (fast != NULL && fast->next != NULL)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
-		
-		if (slow == fast)
-			return (0);
-	}
-	return (1);
-}
-
-/**
  * insertion_sort_list - sorts a doubly linked list in ascending order
  * @list: pointer to the head of the list
  */
