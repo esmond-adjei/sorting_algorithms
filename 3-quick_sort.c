@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * _swap - swaps two numbers.
- * @a: integer
- * @b: integer
+ * swap - swaps two numbers.
+ * @a: first number
+ * @b: second number
  */
-void _swap(int *a, int *b)
+void swap(int *a, int *b)
 {
 	int tmp;
 
@@ -15,25 +15,25 @@ void _swap(int *a, int *b)
 }
 
 /**
- * _split - splits the array and takes the last element as pivot
- * @arr: input array
- * @min: first element
- * @last: The last element
- * @size: size
+ * partition - partitions the array and takes the last element as pivot
+ * @arr: array to be partitioned
+ * @first: first element index
+ * @last: The last element index
+ * @size: size of array
  * Return: integer
  */
-int _split(int *arr, int min, int last, size_t size)
+int partition(int *arr, int first, int last, size_t size)
 {
-	int piv;
-	int i = (min);
+	int pivot;
+	int i = (first);
 	int j;
 
-	piv = arr[last];
-	for (j = min; j < last; j++)
+	pivot = arr[last];
+	for (j = first; j < last; j++)
 	{
-		if (arr[j] <= piv)
+		if (arr[j] <= pivot)
 		{
-			_swap(&arr[i], &arr[j]);
+			swap(&arr[i], &arr[j]);
 
 			if (i != j)
 				print_array(arr, size);
@@ -42,7 +42,7 @@ int _split(int *arr, int min, int last, size_t size)
 		}
 	}
 
-	_swap(&arr[i], &arr[last]);
+	swap(&arr[i], &arr[last]);
 	if (i != j)
 	{
 		print_array(arr, size);
@@ -53,24 +53,24 @@ int _split(int *arr, int min, int last, size_t size)
 /**
  * quick_sort_array - quick_sort_array
  * @arr: arr
- * @min: min
+ * @first: first
  * @last: last
  * @size: size
  */
-void quick_sort_array(int *arr, int min, int last, size_t size)
+void quick_sort_array(int *arr, int first, int last, size_t size)
 {
-	int piv;
+	int pivot;
 
-	if (min < last)
+	if (first < last)
 	{
-		piv = _split(arr, min, last, size);
-		quick_sort_array(arr, min, (piv - 1), size);
-		quick_sort_array(arr, (piv + 1), last, size);
+		pivot = partition(arr, first, last, size);
+		quick_sort_array(arr, first, (pivot - 1), size);
+		quick_sort_array(arr, (pivot + 1), last, size);
 	}
 }
 
 /**
- * quick_sort -Sort an array using quick_sort algorithm
+ * quick_sort - Sort an array using quick_sort algorithm
  * @array: array
  * @size: size
  **/
