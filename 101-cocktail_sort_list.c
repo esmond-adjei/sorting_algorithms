@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * list_len - function returns length of list
+ * get_list_len - function returns length of list
  * @list: head of list
  *
  * Return: length
  */
-size_t list_len(listint_t *list)
+size_t get_list_len(listint_t *list)
 {
 	size_t len = 0;
 
@@ -45,7 +45,7 @@ void switch_nodes(listint_t **list, listint_t **p)
 }
 
 /**
- *  cocktail_sort_list - function sorts a doubly linked list using
+ * cocktail_sort_list - function sorts a doubly linked list using
  * the cocktail sort algorithm
  * @list: pointer to list
  */
@@ -54,7 +54,7 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *p;
 	int sorted = 0;
 
-	if (!list || !*list || list_len(*list) < 2)
+	if (!list || !*list || get_list_len(*list) < 2)
 		return;
 	p = *list;
 	while (!sorted)
