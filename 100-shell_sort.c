@@ -1,14 +1,13 @@
 #include "sort.h"
 /**
- * shell_sort -Sort an array using shell_sort algorithm
- * @array: array
+ * shell_sort - sort an array of integers using shell_sort algorithm
+ * @array: array to be sorted
  * @size: size of the array
- * Return: NULL
  **/
 void shell_sort(int *array, size_t size)
 {
 	unsigned int gap = 1, i, j;
-	int temp;
+	int tmp;
 
 	if (array == NULL)
 		return;
@@ -21,14 +20,14 @@ void shell_sort(int *array, size_t size)
 	{
 		for (i = gap; i < size; i++)
 		{
-			temp = array[i];
+			tmp = array[i];
 			j = i;
-			while (j >= gap && array[j - gap] > temp)
+			while (j >= gap && array[j - gap] > tmp)
 			{
 				array[j] = array[j - gap];
 				j -= gap;
 			}
-			array[j] = temp;
+			array[j] = tmp;
 		}
 		print_array(array, size);
 		gap /= 3;
