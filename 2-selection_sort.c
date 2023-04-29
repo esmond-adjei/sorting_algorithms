@@ -1,47 +1,30 @@
 #include "sort.h"
 
 /**
- * swap - swaps two integers in an array
- * @a: first number
- * @b: second number
- */
-void swap(int *a, int *b)
-{
-	int tmp = *a;
-
-	*a = *b;
-	*b = tmp;
-}
-
-/**
- * selection_sort - implementing the selection sort
- * @array: the array to be sorted
- * @size:size of the array
+ * selection_sort - sorts an array of integers using
+ * selection sort algorithm
+ * @array: array to be sorted
+ * @size: size of the array
  */
 void selection_sort(int *array, size_t size)
 {
 	/**
-	 * look for the smallest element
-	 * swap the smallest element with the current
+	 * pd: platform dancer
+	 * cg: challenger
 	 */
-	unsigned int i = 0, j = 0, tmp_loc = 0;
-	int tmp;
+	size_t pd, cg;
 
-	while (i < size)
+	for (pd = 0; pd < size; pd++)
 	{
-		j = i;
-		tmp = array[j], tmp_loc = j;
-		while (j < size)
+		for (cg = pd + 1; cg < size; cg++)
 		{
-			if (array[j] < tmp)
-				tmp = array[j], tmp_loc = j;
-			j++;
+			if (array[pd] > array[cg])
+			{
+				int tmp = array[cg];
+
+				array[cg] = array[pd];
+				array[pd] = tmp;
+			}
 		}
-		if (array[i] != array[tmp_loc])
-		{
-			swap(array + i, array + tmp_loc);
-			print_array(array, size);
-		}
-		i++;
 	}
 }
